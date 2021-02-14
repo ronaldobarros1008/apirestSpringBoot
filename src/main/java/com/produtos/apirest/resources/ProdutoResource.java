@@ -2,6 +2,8 @@ package com.produtos.apirest.resources;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,19 +44,19 @@ public class ProdutoResource {
 	
 	@PostMapping("/produto")
 	@ApiOperation(value="Salva um produto")
-	public Produto salvaProduto(@RequestBody Produto produto) {
+	public Produto salvaProduto(@RequestBody @Valid Produto produto) {
 		return produtoRepository.save(produto);
 	}
 	
 	@DeleteMapping("/produto")
 	@ApiOperation(value="Deleta um produto")
-	public void deletaProduto(@RequestBody Produto produto) {
+	public void deletaProduto(@RequestBody @Valid Produto produto) {
 		produtoRepository.delete(produto);;
 	}
 	
 	@PutMapping("/produto")
 	@ApiOperation(value="Atualiza um produto")
-	public Produto atualizaProduto(@RequestBody Produto produto) {
+	public Produto atualizaProduto(@RequestBody @Valid Produto produto) {
 		return produtoRepository.save(produto);
 	}
 }
